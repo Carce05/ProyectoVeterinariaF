@@ -1,0 +1,80 @@
+﻿@model ProyectoVeterinaria.Models.Proveedor
+
+@{
+    ViewData["Title"] = "RegistrarProveedor";
+    Layout = "~/Views/Shared/_LayoutLandingPage.cshtml";
+
+}
+<div class="card shadow mb-4">
+    <!--<div class="card-header py-3 bg-primary">-->
+    <div class="card-header py-3 bg-info">
+        <h6 class="m-0 font-weight-bold text-white">Registrar proveedor</h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-15">
+                <form asp-action="RegistrarProveedor">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-row">
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="cedula" class="control-label"></label>
+                        <input asp-for="cedula" class="form-control" required type="number" />
+                        <span asp-validation-for="cedula" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="nombre" class="control-label"></label>
+                        <input asp-for="nombre" class="form-control" required type="text"/>
+                        <span asp-validation-for="nombre" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="telefono" class="control-label"></label>
+                        <input asp-for="telefono" class="form-control" required type="text"/>
+                        <span asp-validation-for="telefono" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="direccion" class="control-label"></label>
+                        <input asp-for="direccion" class="form-control" required type="text"/>
+                        <span asp-validation-for="direccion" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="correo" class="control-label"></label>
+                        <input asp-for="correo" class="form-control" required type="email"/>
+                        <span asp-validation-for="correo" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <input type="submit" value="Crear proveedor" class="btn btn-primary" />
+                    </div>
+                    </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+
+

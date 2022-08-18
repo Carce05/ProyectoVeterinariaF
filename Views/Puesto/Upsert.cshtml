@@ -1,0 +1,51 @@
+﻿@model ProyectoVeterinaria.Models.Puesto
+
+@{
+    ViewData["Title"] = "Upsert";
+    Layout = "~/Views/Shared/_LayoutLandingPage.cshtml";
+}
+
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-info">
+        <h6 class="m-0 font-weight-bold text-white">Registrar un nuevo Puesto</h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Upsert">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="puesto" class="control-label"></label>
+                        <input asp-for="puesto" class="form-control" />
+                        <span asp-validation-for="puesto" class="text-danger"></span>
+                    </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+   <button type="submit" class="btn btn-primary"  onclick="swal('Exito!', 'Se agregó con éxito!', 'success');"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+</svg> Puesto empleado</button>
+
+      <a class="btn btn-danger" asp-action="Index"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+  <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+</svg>  Volver</a>
+ </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+      
+        </div>
+
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

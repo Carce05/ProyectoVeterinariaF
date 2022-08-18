@@ -1,0 +1,100 @@
+﻿@model ProyectoVeterinaria.Models.ProductoViewModel
+
+@{
+    var Producto = Model.Producto;
+    ViewData["Title"] = "EditarProducto";
+    Layout = "~/Views/Shared/_LayoutLandingPage.cshtml";
+
+}
+<div class="card shadow mb-4">
+    <!--<div class="card-header py-3 bg-primary">-->
+    <div class="card-header py-3 bg-info">
+        <h6 class="m-0 font-weight-bold text-white">Editar producto</h6>
+    </div>
+    <div class="card-body">
+        <div class="row"</div>
+            <div class="col-md-15">
+                <form asp-action="EditarProducto">
+                    <input type="hidden" asp-for="Producto.idProducto" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-row">
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Producto.codigo" class="control-label"></label>
+                        <input asp-for="Producto.codigo" class="form-control" required type="number"/>
+                        <span asp-validation-for="Producto.codigo" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Producto.descripcion" class="control-label"></label>
+                        <input asp-for="Producto.descripcion" class="form-control" required type="text"/>
+                        <span asp-validation-for="Producto.descripcion" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Producto.marca" class="control-label"></label>
+                        <input asp-for="Producto.marca" class="form-control" required type="text"/>
+                        <span asp-validation-for="Producto.marca" class="text-danger"></span>
+                    </div>
+                    </div>
+                     <div class="form-row">
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Producto.precioCompra" class="control-label"></label>
+                        <input asp-for="Producto.precioCompra" class="form-control" required type="number"/>
+                        <span asp-validation-for="Producto.precioCompra" class="text-danger"></span>
+                    </div>
+                    </div>
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Producto.precioVenta" class="control-label"></label>
+                        <input asp-for="Producto.precioVenta" class="form-control" required type="text"/>
+                        <span asp-validation-for="Producto.precioVenta" class="text-danger"></span>
+                    </div>
+                    </div>
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Producto.unidadMedida" class="control-label"></label>
+                        <input asp-for="Producto.unidadMedida" class="form-control" required type="text"/>
+                        <span asp-validation-for="Producto.unidadMedida" class="text-danger"></span>
+                    </div>
+                    </div>
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Producto.cantidad" class="control-label"></label>
+                        <input asp-for="Producto.cantidad" class="form-control" required type="text"/>
+                        <span asp-validation-for="Producto.cantidad" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                        <div class="form-group">
+                            <label asp-for="Producto.idProveedor" class="control-label"></label>
+                            @Html.DropDownListFor(s => s.Producto.idProveedor, Model.Proveedores, "Seleccione un proveedor", new {@class= "form-control"})
+                            <span asp-validation-for="Producto.idProveedor" class="text-danger"></span>
+                        </div>
+                    </div>
+                       <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <input type="submit" value="Guardar" class="btn btn-success" />
+                    </div>
+                    </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

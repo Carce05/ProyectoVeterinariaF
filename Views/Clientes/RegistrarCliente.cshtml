@@ -1,0 +1,107 @@
+﻿@model ProyectoVeterinaria.Models.Clientes
+
+@{
+    ViewData["Title"] = "RegistrarCliente";
+    Layout = "~/Views/Shared/_LayoutLandingPage.cshtml";
+
+}
+<div class="card shadow mb-4">
+    <!--<div class="card-header py-3 bg-primary">-->
+    <div class="card-header py-3 bg-info">
+        <h6 class="m-0 font-weight-bold text-white">Registrar Clientes</h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-15">
+                <form asp-action="RegistrarCliente">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-row">
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cedula" class="control-label"></label>
+                        <input asp-for="Cedula" class="form-control" required type="number" />
+                        <span asp-validation-for="Cedula" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="NombreDueño" class="control-label"></label>
+                        <input asp-for="NombreDueño" class="form-control" required type="text"/>
+                        <span asp-validation-for="NombreDueño" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="NombreMascota" class="control-label"></label>
+                        <input asp-for="NombreMascota" class="form-control" required type="text"/>
+                        <span asp-validation-for="NombreMascota" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="RazaMascota" class="control-label"></label>
+                        <input asp-for="RazaMascota" class="form-control" required type="text"/>
+                        <span asp-validation-for="RazaMascota" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="TipoMascota" class="control-label"></label>
+                        <span asp-validation-for="TipoMascota" class="text-danger"></span>
+                        <select name="TipoMascota" asp-for="TipoMascota" id="TipoMascota" class="browser-default custom-select" required>
+                            <option value="Perros">Perros</option>
+                            <option value="Gatos">Gatos</option>
+                            <option value="Conejos">Conejos</option>
+                            <option value="Vacas">Vacas</option>
+                            <option value="Toros">Toros</option>
+                            <option value="Cabras">Cabras</option>
+                            <option value="Caballos">Caballos</option>
+                            <option value="Burros">Burros</option>
+                        </select>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Celular" class="control-label"></label>
+                        <input asp-for="Celular" class="form-control" required type="number"/>
+                        <span asp-validation-for="Celular" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Correo" class="control-label"></label>
+                        <input asp-for="Correo" class="form-control" required type="email"/>
+                        <span asp-validation-for="Correo" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <button type="submit" class="btn btn-primary"  onclick="swal('Exito!','El Cliente se registro con exito!', 'success');"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                        </svg>  Registrar Cliente
+                    </button>
+                    </div>
+
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+

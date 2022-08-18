@@ -1,0 +1,110 @@
+﻿
+
+@model FacturacionViewModel
+
+
+@{
+    ViewData["Title"] = "Registrar Factura";
+    Layout = "~/Views/Shared/_LayoutLandingPage.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <!--<div class="card-header py-3 bg-primary">-->
+         
+    <div class="card-header py-3 bg-info">
+        <h6 class="m-0 font-weight-bold text-white">Registrar Factura</h6>
+    </div>
+
+    <b>Lista de <a asp-action="ConsultarProductos" asp-controller="Productos" class="pull-right">Productos</a></b>
+    &nbsp;&nbsp;
+        
+        @await Html.PartialAsync("RegistrarFD")
+
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-15">
+                <form asp-action="RegistrarF">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-row">
+
+                        <div class="col-xs-10 col-sm-10 col-md-4">
+                            <div class="form-group">
+
+                                <label asp-for="Facturacion.ClienteIdCliente" class="control-label">Cedula del cliente</label>
+                                <span asp-validation-for="Facturacion.ClienteIdCliente" class="text-danger"></span>
+                                @Html.DropDownListFor(s => s.Facturacion.ClienteIdCliente, Model.Cedula, "Seleccione la Cedula del Cliente", new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-10 col-sm-10 col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Facturacion.NombreDueño" class="control-label">Nombre del Cliente</label>
+                                <input asp-for="Facturacion.NombreDueño" placeholder="Detalle" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="Facturacion.NombreDueño" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-10 col-sm-10 col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Facturacion.EmpleadoId" class="control-label">Cedula del Empleado</label>
+                                <span asp-validation-for="Facturacion.EmpleadoId" class="text-danger"></span>
+                                @Html.DropDownListFor(s => s.Facturacion.EmpleadoId, Model.CedulaEmpleado, "Seleccione ID del empleado", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        
+
+                        <div class="col-xs-10 col-sm-10 col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Facturacion.Detalle" class="control-label"></label>
+                                <input asp-for="Facturacion.Detalle" placeholder="Detalle" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="Facturacion.Detalle" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-10 col-sm-10 col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Facturacion.TipoPago" class="control-label">IVA</label>
+                                <span asp-validation-for="Facturacion.TipoPago" class="text-danger"></span>
+                                 <select name="Facturacion.TipoPago" asp-for="Facturacion.TipoPago" id="TipoPago" class="browser-default custom-select" required>
+                                    <option value="Pago con tarjeta">Pago con tarjeta</option>
+                                    <option value="Pago en efectivo">Pago en efectivo</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-10 col-sm-10 col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Facturacion.Total" class="control-label"></label>
+                                <input asp-for="Facturacion.Total" placeholder="Total a cobrar" class="form-control" min="1" autocomplete="off" />
+                                <span asp-validation-for="Facturacion.Total" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <input type="submit" value="Ingresar Factura" class="btn btn-primary" />
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+               <div class="form-group">
+            <a class="btn btn-danger" asp-action="ConsultarFacturas">Lista de facturas</a>
+               </div>
+         </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

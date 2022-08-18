@@ -1,0 +1,78 @@
+﻿@model FacturacionViewModel
+
+<form asp-action="LlenarFD">
+<div class="row">
+    <div class="form-group col-sm-12">
+        <table id="tblAddProductos" class="ItemTranTable" border="1">
+            <thead>
+                <tr>
+                    <th>ID Producto</th>
+                    <th>Producto Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot id="tblAddProductosfoot">
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.FacturaDetalle.ProductoidProducto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.FacturaDetalle.ProductoPrecioVenta)
+                    </td>
+                    <td>
+                       @Html.DisplayFor(model => model.FacturaDetalle.Cantidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.FacturaDetalle.Total)
+                    </td>
+                   
+                    <td>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <input id="itemUnitPrice" type="number" hidden />
+    </div>
+
+    <div class="form-group form-group col-sm-12">
+
+         <div class="form-group">
+                    <label asp-for="FacturaDetalle.ProductoidProducto" class="control-label"></label>
+                    <span asp-validation-for="FacturaDetalle.ProductoidProducto" class="text-danger"></span>
+                    @Html.DropDownListFor(s => s.FacturaDetalle.ProductoidProducto, Model.Producto, "Seleccione Id del producto", new { @class = "form-control" })
+                </div>
+
+
+        <div class="form-group">
+                    <label asp-for="FacturaDetalle.Cantidad" class="control-label"></label>
+                    <input asp-for="FacturaDetalle.Cantidad" class="form-control" />
+                    <span asp-validation-for="FacturaDetalle.Cantidad" class="text-danger"></span>
+                </div>
+
+        <input class="btn btn-danger" type="submit" asp-action="LlenarFD" asp-controller="Facturacion"> Agregar Producto</input>
+    </div>
+</div>
+</form>
+
+<style>
+    .unstyled-button {
+        border: none;
+        padding: 0;
+        background: none;
+    }
+</style>
+
+
+<script>
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+
+

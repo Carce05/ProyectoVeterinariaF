@@ -1,0 +1,158 @@
+﻿@model ProyectoVeterinaria.Models.CitasViewModel
+
+@{
+    ViewData["Title"] = "AgendarCita";
+    Layout = "~/Views/Shared/_LayoutLandingPage.cshtml";
+
+}
+
+<div class="card shadow mb-4">
+    <!--<div class="card-header py-3 bg-primary">-->
+    <div class="card-header py-3 bg-info">
+        <h6 class="m-0 font-weight-bold text-white">Agendar Cita</h6>
+    </div>
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-15">
+                <form asp-action="AgendarCita">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-row">
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cita.ClienteIdCliente" class="control-label"></label>
+                        <span asp-validation-for="Cita.ClienteIdCliente" class="text-danger"></span>
+                        @Html.DropDownListFor(s => s.Cita.ClienteIdCliente, Model.Cliente,"Seleccione una Cedula del Cliente ", new{@class="form-control",@required="required"})
+                    </div>
+                    </div>
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cita.EmpleadoId" class="control-label"></label>
+                        <span asp-validation-for="Cita.EmpleadoId" class="text-danger"></span>
+                        @Html.DropDownListFor(s => s.Cita.EmpleadoId, Model.Empleado,"Seleccione una Cedula del Empleado ", new{@class="form-control",@required="required"})
+                    </div>
+                    </div>
+                    
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cita.NombreDueño" class="control-label"></label>
+                        <span asp-validation-for="Cita.NombreDueño" class="text-danger"></span>
+                        @Html.DropDownListFor(s => s.Cita.NombreDueño, Model.Nombre,"Seleccione un Nombre", new{@class="form-control",@required="required"})
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cita.NombreVeterinario" class="control-label"></label>
+                        <span asp-validation-for="Cita.NombreVeterinario" class="text-danger"></span>
+                        <select name="Cita.NombreVeterinario" asp-for="Cita.NombreVeterinario" class="browser-default custom-select" required>
+                            <option >Seleccione un Veterinario</option>
+                            <option value="Dr.Francisco Granados">Dr.Francisco Granados</option>
+                            <option value="Dra.Paola Flores">Dra.Paola Flores</option>
+                            <option value="Dr.Esteban Viquez">Dr.Esteban Viquez</option>
+                            <option value="Dra.Carolina Mendez">Dra.Carolina Mendez</option>
+                        </select>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cita.RazaMascota" class="control-label"></label>
+                        <span asp-validation-for="Cita.RazaMascota" class="text-danger"></span>
+                        @Html.DropDownListFor(s => s.Cita.RazaMascota, Model.Raza,"Seleccione una Raza", new{@class="form-control",@required="required"})
+                    </div>
+                    </div>
+
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cita.EstadoMascota" class="control-label"></label>
+                        <span asp-validation-for="Cita.EstadoMascota" class="text-danger"></span>
+                        <select name="Cita.EstadoMascota" asp-for="Cita.EstadoMascota" class="browser-default custom-select" required>
+                            <option >Seleccione un Estado de Salud</option>
+                            <option value="Sano">Sano</option>
+                            <option value="Estable">Estable</option>
+                            <option value="Enfermo">Enfermo</option>
+                        </select>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cita.FechaCita" class="control-label"></label>
+                        <input asp-for="Cita.FechaCita" class="form-control" required type="date"/>
+                        <span asp-validation-for="Cita.FechaCita" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cita.HoraCita" class="control-label"></label>
+                        <span asp-validation-for="Cita.HoraCita" class="text-danger"></span>
+                        <select name="Cita.HoraCita" asp-for="Cita.HoraCita" class="browser-default custom-select" required>
+                            <option >Seleccione la Hora de su Cita</option>
+                            <option value="8 a.m">8 a.m</option>
+                            <option value="9 a.m">9 a.m</option>
+                            <option value="10 a.m">10 a.m</option>
+                            <option value="11 a.m">11 a.m</option>
+                            <option value="12 a.m">12 a.m</option>
+                            <option value="1 p.m">1 p.m</option>
+                            <option value="2 p.m">2 p.m</option>
+                            <option value="3 p.m">3 p.m</option>
+                            <option value="4 p.m">4 p.m</option>
+                            <option value="5 p.m">5 p.m</option>
+                            <option value="6 p.m">6 p.m</option>
+                            <option value="7 p.m">7 p.m</option>
+                        </select>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cita.MotivoCita" class="control-label"></label>
+                        <input asp-for="Cita.MotivoCita" class="form-control" required type="text" />
+                        <span asp-validation-for="Cita.MotivoCita" class="text-danger"></span>
+                    </div>
+                    </div>
+
+                    <div class="col-xs-10 col-sm-10 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cita.NombreServicio" class="control-label"></label>
+                        <span asp-validation-for="Cita.NombreServicio" class="text-danger"></span>
+                        <select name="Cita.NombreServicio" asp-for="Cita.NombreServicio" class="browser-default custom-select" required>
+                            <option >Seleccione un Servicio</option>
+                            <option value="Odontologia">Odontologia</option>
+                            <option value="Grooming">Grooming</option>
+                            <option value="Cirugias">Cirugias</option>
+                            <option value="Nutricion">Nutricion</option>
+                            <option value="Radiologia">Radiologia</option>
+                            <option value="Fisioterapia">Fisioterapia</option>
+                            <option value="Medicina General">Medicina General</option>
+
+                        </select>
+                    </div>
+                    </div>
+
+                     <div class="col-xs-12 col-sm-12 col-md-12">
+                    <button type="submit" class="btn btn-primary"  onclick="swal('Exito!','La Cita se registro con exito!', 'success');"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                        </svg>  Agendar Cita
+                    </button>
+                    </div>
+
+                   </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

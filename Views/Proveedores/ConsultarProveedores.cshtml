@@ -1,0 +1,108 @@
+﻿@model IEnumerable<ProyectoVeterinaria.Models.Proveedor>
+
+@{
+    ViewData["Title"] = "ConsultarProveedor";
+    Layout = "~/Views/Shared/_LayoutLandingPage.cshtml";
+
+}
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @TempData["Mensaje"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-info">
+        <h6 class="m-0 font-weight-bold text-white">Consultar proveedores</h6>
+    </div>
+    <div class="card-body">
+        <div class="row"> 
+            <div class="col-sm-12">
+
+                <!-- DataTales Example -->
+                <div class="table-responsive">
+
+                    <p>
+                        <a asp-action="RegistrarProveedores" class="btn btn-success">Crear proveedor</a>
+                    </p>
+                    <form asp-controller="Proveedores" asp-action="BuscarProveedores" method="get">
+                            <p>
+                                <div class="form-row">
+
+                                    <div class="col-xs-10 col-sm-10 col-md-3">
+                                        <input type="text" name="buscar" class="form-text"/>
+                                    </div>
+
+                                    <div class="col-xs-10 col-sm-10 col-md-3">
+                                        <input type="submit" value="Buscar" class="btn btn-info"/>
+                                        @if (TempData["EncontroProveedores"] != null)
+                                        {
+                                            <a asp-action="ConsultarProveedores" class="btn btn-secondary">Limpiar</a>
+                                        }
+                                    </div>
+
+                                </div>
+                                
+                            </p>
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.nombre)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.telefono)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.direccion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.cedula)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.correo)
+                                </th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>    
+                                    <td>
+                                         @Html.DisplayFor(modelItem => item.nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.telefono)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.direccion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.cedula)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.correo)
+                                    </td>
+                                    <td class="d-flex">
+                                        <a class="btn btn-warning" asp-action="EditarProveedores" asp-route-idProveedor="@item.idProveedor">Editar</a> |
+                                        <a class="btn btn-danger" asp-action="EliminarProveedores" asp-route-idProveedor="@item.idProveedor">Eliminar</a> 
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- DataTales Example -->
+    </div>
+</div>

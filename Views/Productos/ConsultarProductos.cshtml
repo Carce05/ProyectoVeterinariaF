@@ -1,0 +1,126 @@
+﻿@model IEnumerable<ProyectoVeterinaria.Models.Producto>
+
+@{
+    ViewData["Title"] = "ConsultarProductos";
+    Layout = "~/Views/Shared/_LayoutLandingPage.cshtml";
+
+}
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @TempData["Mensaje"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-info">
+        <h6 class="m-0 font-weight-bold text-white">Consultar productos</h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <!-- DataTales Example -->
+                <div class="table-responsive">
+
+                    <p>
+                        <a asp-action="RegistrarProductos" class="btn btn-success">Crear producto</a>
+                    </p>
+                    <form asp-controller="Productos" asp-action="BuscarProductos" method="get">
+                        <p>
+                            <div class="form-row">
+
+                                <div class="col-xs-10 col-sm-10 col-md-3">
+                                    <input type="text" name="buscar" class="form-text" />
+                                </div>
+
+                                <div class="col-xs-10 col-sm-10 col-md-3">
+                                    <input type="submit" value="Buscar" class="btn btn-info" />
+                                    @if (TempData["EncontroProductos"] != null)
+                                    {
+                                        <a asp-action="ConsultarProductos" class="btn btn-secondary">Limpiar</a>
+                                    }
+                                </div>
+
+                            </div>
+
+                        </p>
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.codigo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.descripcion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.marca)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.precioCompra)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.precioVenta)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.unidadMedida)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.cantidad)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.idProveedor)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.codigo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.marca)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.precioCompra)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.precioVenta)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.unidadMedida)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.cantidad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.proveedor.nombre)
+                                    </td>
+
+                                    <td class="d-flex">
+                                        <a class="btn btn-warning" asp-action="EditarProductos" asp-route-idProducto="@item.idProducto">Editar</a> |
+                                        <a class="btn btn-danger" asp-action="EliminarProductos" asp-route-idProducto="@item.idProducto">Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- DataTales Example -->
+    </div>
+</div>

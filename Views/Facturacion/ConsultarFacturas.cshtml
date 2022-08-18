@@ -1,0 +1,101 @@
+﻿@model IEnumerable<ProyectoVeterinaria.Models.Facturacion>
+
+@{
+    ViewData["Title"] = "Facturas";
+    Layout = "~/Views/Shared/_LayoutLandingPage.cshtml";
+}
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-info">
+        <h6 class="m-0 font-weight-bold text-white">Consultar Facturas</h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <!-- DataTales Example -->
+                <div class="table-responsive">
+                    <p>
+                        <a asp-action="RegistrarF" class="btn btn-success">Crear Factura</a>
+                    </p>
+                     
+                     <form asp-controller="Facturacion" asp-action="ConsultarFacturas" method="get">
+                           <p>
+                             <div class="form-row">
+
+                             <div class="col-sm-2.8 ">    
+                                 <input style="border: 2px solid #D0D1D3;-moz-border-radius: 6px;-webkit-border-radius: 6px;padding: 6px;" type="text" name="buscar" class="form-text "placeholder="Escriba el Nombre"/>
+                             </div>
+                                 <button type="submit" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                 </svg></button>
+                      
+                             </div>
+                                
+                          </p>
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IdFactura) 
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ClienteIdCliente)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.NombreDueño)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EmpleadoId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TipoPago)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Total)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdFactura)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ClienteIdCliente)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NombreDueño)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EmpleadoId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TipoPago)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Total)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Editar" asp-route-id="@item.IdFactura">Editar</a> |
+
+                                        <a asp-action="EliminarF" asp-route-id="@item.IdFactura">Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- DataTales Example -->
+    </div>
+</div>
